@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VGE — Variables CSS globales (design antillais)
+   ============================================================ */
+@layer base {
+  :root {
+    /* Couleurs de marque VGE par défaut */
+    --color-primary: #FF6B35;
+    --color-secondary: #2EC4B6;
+    --color-accent: #3D8B37;
+    --color-coral: #FF6B35;
+    --color-turquoise: #2EC4B6;
+    --color-tropical: #3D8B37;
+    --color-sand: #F5E6D3;
+    --color-dark: #1A1A2E;
+
+    /* Couleurs dynamiques par tenant (overridées par TenantThemeProvider) */
+    --tenant-primary: var(--color-primary);
+    --tenant-secondary: var(--color-secondary);
+    --tenant-accent: var(--color-accent);
+
+    /* Typography */
+    --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #fafaf9;
+    color: var(--color-dark);
+    min-height: 100dvh;
+  }
+
+  /* Amélioration accessibilité focus */
+  :focus-visible {
+    outline: 2px solid var(--tenant-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================
+   Utilities Tailwind custom
+   ============================================================ */
+@layer utilities {
+  .btn-primary {
+    background-color: var(--tenant-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: opacity 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    background-color: var(--tenant-secondary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+
+  .card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    padding: 1.5rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ============================================================
+   Status badges commandes
+   ============================================================ */
+.status-pending   { background: #FEF3C7; color: #92400E; }
+.status-paid      { background: #DBEAFE; color: #1E40AF; }
+.status-preparing { background: #FED7AA; color: #9A3412; }
+.status-ready     { background: #D1FAE5; color: #065F46; }
+.status-picked_up { background: #E5E7EB; color: #374151; }
+.status-cancelled { background: #FEE2E2; color: #991B1B; }

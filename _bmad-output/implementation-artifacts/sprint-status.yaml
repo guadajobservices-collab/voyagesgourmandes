@@ -1,0 +1,91 @@
+project: voyagesgourmandes
+date: 2026-03-15
+current_sprint: 1
+implementation_date: 2026-03-15
+
+stories:
+  - id: "1.1"
+    title: "Schema base de données multi-tenant"
+    status: complete
+    epic: 1
+    notes: "Migration SQL dans supabase/migrations/20260315000001_initial_schema.sql + seed démo"
+  - id: "1.2"
+    title: "Middleware de résolution du tenant"
+    status: complete
+    epic: 1
+    notes: "src/middleware.ts - résolution tenant via slug URL"
+  - id: "1.3"
+    title: "Configuration PWA"
+    status: complete
+    epic: 1
+    notes: "Manifest dynamique par tenant /[slug]/manifest.json/route.ts"
+  - id: "2.1"
+    title: "Authentification Supabase"
+    status: complete
+    epic: 2
+    notes: "src/components/auth/ + src/lib/supabase/ avec @supabase/ssr"
+  - id: "2.2"
+    title: "Profil & branding restaurant"
+    status: complete
+    epic: 2
+    notes: "Dashboard branding + color picker live preview"
+  - id: "3.1"
+    title: "Gestion du menu — CRUD dashboard"
+    status: complete
+    epic: 3
+    notes: "Catégories + plats + upload photo + toggle disponibilité"
+  - id: "3.2"
+    title: "Vitrine catalogue client"
+    status: complete
+    epic: 3
+    notes: "Page /[slug] avec Zustand cart, design antillais"
+  - id: "4.1"
+    title: "Panier et formulaire de commande"
+    status: complete
+    epic: 4
+    notes: "CartStore Zustand + CheckoutForm + créneaux retrait"
+  - id: "4.2"
+    title: "Paiement Stripe Connect"
+    status: complete
+    epic: 4
+    notes: "API /api/checkout + Stripe Checkout Sessions + 5% commission"
+  - id: "4.3"
+    title: "Dashboard commandes temps réel"
+    status: complete
+    epic: 4
+    notes: "Realtime Supabase + notifications son navigateur"
+  - id: "4.4"
+    title: "Gestion des statuts de commande"
+    status: complete
+    epic: 4
+    notes: "Flow: paid → preparing → ready → picked_up"
+  - id: "5.1"
+    title: "Notifications email (Resend)"
+    status: complete
+    epic: 5
+    notes: "Templates React Email + confirmation + prête"
+  - id: "6.1"
+    title: "Webhook WhatsApp Meta Cloud API"
+    status: complete
+    epic: 6
+    notes: "Bot conversationnel menu/panier/paiement via WhatsApp"
+  - id: "7.1"
+    title: "Système de points fidélité"
+    status: complete
+    epic: 7
+    notes: "Earning + récompenses + historique + dashboard restaurateur"
+  - id: "8.1"
+    title: "Back-office admin multi-restaurants"
+    status: complete
+    epic: 8
+    notes: "CRUD tenants, stats globales, rôle admin requis"
+
+completion_summary:
+  total_stories: 16
+  complete: 16
+  ready: 0
+  typescript_errors: 0
+  type_check_passed: true
+  migrations_ready: true
+  migrations_path: "supabase/migrations/"
+  env_example_path: ".env.local.example"
