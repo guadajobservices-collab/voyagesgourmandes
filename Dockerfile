@@ -1,9 +1,9 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+# NODE_ENV=development pour installer TypeScript et les devDeps de build
+RUN NODE_ENV=development npm ci
 COPY . .
-ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
@@ -13,7 +13,6 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public 2>/dev/null || true
 EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
