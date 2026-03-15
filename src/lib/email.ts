@@ -3,7 +3,9 @@ import { OrderConfirmationEmail } from '@/emails/OrderConfirmation'
 import { OrderReadyEmail } from '@/emails/OrderReady'
 import type { OrderWithItems } from '@/types/database.types'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResendClient() {
+  return new Resend(process.env.RESEND_API_KEY ?? 're_placeholder')
+}
 
 export async function sendOrderConfirmation(order: OrderWithItems) {
   if (!process.env.RESEND_API_KEY) {
@@ -11,6 +13,7 @@ export async function sendOrderConfirmation(order: OrderWithItems) {
     return
   }
 
+  const resend = getResendClient()
   try {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? 'noreply@vge.gp',
@@ -29,6 +32,7 @@ export async function sendOrderReady(order: OrderWithItems) {
     return
   }
 
+  const resend = getResendClient()
   try {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL ?? 'noreply@vge.gp',
